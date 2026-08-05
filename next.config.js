@@ -1,1 +1,1 @@
-module.exports = { experimental: { esmExternals: 'loose' } }
+module.exports = {}
