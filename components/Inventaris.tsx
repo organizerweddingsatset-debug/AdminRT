@@ -1,9 +1,2 @@
-
 'use client'
-import { useEffect, useState } from 'react'
-import { supabase } from '@/lib/supabase'
-export default function Inventaris(){
-  const [data,setData]=useState<any[]>([])
-  useEffect(()=>{ supabase.from('inventaris').select('*').then(({data})=>setData(data||[])) },[])
-  return <div className="p-4 text-[13px]">Inventaris: {data.length} item</div>
-}
+export default function Inventaris(){return <div/>}

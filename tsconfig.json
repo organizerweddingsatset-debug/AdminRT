@@ -1,7 +1,1 @@
-
-import { createClient } from '@supabase/supabase-js'
-import { createBrowserClient as createSSRBrowserClient } from '@supabase/ssr'
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-export const supabase = createClient(url, anon)
-export function createBrowserClient(){ return createSSRBrowserClient(url, anon) }
+{"compilerOptions":{"target":"es5","lib":["dom","dom.iterable","es6"],"allowJs":true,"skipLibCheck":true,"strict":true,"noEmit":true,"esModuleInterop":true,"module":"esnext","moduleResolution":"bundler","resolveJsonModule":true,"isolatedModules":true,"jsx":"preserve","incremental":true,"plugins":[{"name":"next"}],"paths":{"@/*":["./*"]}},"include":["**/*.ts","**/*.tsx"]}

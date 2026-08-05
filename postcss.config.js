@@ -1,2 +1,1 @@
-'use client'
-export default function ChartKas({data}:{data:number[]}){return <div/>}
+module.exports={plugins:{tailwindcss:{},autoprefixer:{}}}
