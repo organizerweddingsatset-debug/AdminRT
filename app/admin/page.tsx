@@ -1,4 +1,3 @@
-
 'use client'
 import { useEffect, useState } from 'react'
 import { createBrowserClient, supabase } from '@/lib/supabase'
@@ -17,10 +16,10 @@ export default function Admin(){
   const loadWarga=async()=>{ const { data } = await supabase.from('warga').select('*').order('nama'); setWarga(data||[]) }
   useEffect(()=>{
     const s=createBrowserClient()
-    s.auth.getUser().then(({data})=>{ if(!data.user) router.push('/login') })
+    s.auth.getUser().then(({data}:any)=>{ if(!data.user) router.push('/login') })
     loadWarga()
   },[])
-  const logout=async()=>{ const s=createBrowserClient(); await s.auth.signOut(); router.push('/login') }
+  const logout=async()=>{ const s=createBrowserClient(); await s.auth.signOut(); localStorage.clear(); router.push('/login') }
   return (
     <div className="min-h-screen flex bg-[#0F1220] text-white">
       <div className="w-[260px] card border-r border-[#2A2F4A] p-5 flex flex-col sticky top-0 h-screen overflow-auto">
