@@ -1,0 +1,2 @@
+import './globals.css'
+export const metadata={title:'RT 09 Dark - Supabase Live'}; export default function RootLayout({children}:{children:React.ReactNode}){return (<html lang='id'><body>{children}</body></html>)}

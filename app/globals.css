@@ -1,0 +1,6 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+body{background:#0F1220;color:#E2E8F0}
+.card-dark{background:#1C2035;border:1px solid #2A2F4A;border-radius:20px}
+.card-dark-2{background:#1E233A;border:1px solid #2A2F4A;border-radius:16px}
+.badge-lunas{background:#0f3d2e;color:#22c55e;border:1px solid #14532d}
+.badge-belum{background:#3f1a1a;color:#f87171;border:1px solid #7f1d1d}
