@@ -17,7 +17,6 @@ export default function WargaPage(){
   const [tab,setTab]=useState('iuran')
   const [showQRIS,setShowQRIS]=useState<any>(null)
   const [qrisUrl,setQrisUrl]=useState('')
-  const [formSurat,setFormSurat]=useState({jenis:'Surat Pengantar',keperluan:'',penutup:'Demikian surat ini dibuat.'})
   const [waKontak,setWaKontak]=useState({ketua:'',keamanan:''})
   const router=useRouter()
 
@@ -33,7 +32,6 @@ export default function WargaPage(){
   }
 
   useEffect(()=>{
-    // PRIORITAS 1: cek localStorage warga_session (login nama/blok)
     const sess = localStorage.getItem('warga_session')
     if(sess){
       try{
@@ -43,9 +41,8 @@ export default function WargaPage(){
         return
       }catch(e){}
     }
-    // PRIORITAS 2: cek supabase auth (untuk yang sudah punya akun)
     const s=createBrowserClient()
-    s.auth.getUser().then(async ({data})=>{
+    s.auth.getUser().then(async ({data}:any)=>{
       if(data.user){
         const { data: prof } = await supabase.from('profiles').select('*').eq('id', data.user.id).single()
         if(prof){
@@ -65,7 +62,7 @@ export default function WargaPage(){
   }
   const logout=async()=>{ localStorage.removeItem('warga_session'); localStorage.removeItem('warga_nik'); const s=createBrowserClient(); await s.auth.signOut(); router.push('/login') }
 
-  if(!wargaData) return <div className="min-h-screen bg-[#0F1220] flex items-center justify-center text-white">Loading {localStorage.getItem('warga_nik') || ''}...</div>
+  if(!wargaData) return <div className="min-h-screen bg-[#0F1220] flex items-center justify-center text-white">Loading...</div>
 
   return (
     <div className="min-h-screen bg-[#0F1220] text-white p-4 lg:p-6 pb-24">
