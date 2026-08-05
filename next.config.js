@@ -1,1 +1,1 @@
-const nextConfig={}; module.exports=nextConfig
+module.exports = { experimental: { esmExternals: 'loose' } }
