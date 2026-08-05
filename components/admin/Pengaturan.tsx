@@ -19,7 +19,7 @@ export default function Pengaturan(){
         <div className="grid grid-cols-2 gap-3">
           <div><label className="text-[10px] text-slate-500">No WA Ketua RT</label><input value={wa.ketua} onChange={e=>setWa({...wa,ketua:e.target.value})} className="input mt-1" placeholder="62xxx" /></div>
           <div><label className="text-[10px] text-slate-500">No WA Keamanan</label><input value={wa.keamanan} onChange={e=>setWa({...wa,keamanan:e.target.value})} className="input mt-1" placeholder="62xxx" /></div>
-          <div className="col-span-2"><label className="text-[10px] text-slate-500">Template Bayar Lunas (gunakan {nama} {bulan} {tahun} {nominal})</label><textarea value={wa.template_bayar} onChange={e=>setWa({...wa,template_bayar:e.target.value})} className="w-full bg-[#0F1220] border border-[#2A2F4A] rounded-2xl p-3 text-[12px] mt-1 h-20" /></div>
+          <label>Template Bayar Lunas (gunakan {'{nama} {bulan} {tahun} {nominal}'})</label>
           <div className="col-span-2"><label className="text-[10px] text-slate-500">Template Tagih</label><textarea value={wa.template_tagih} onChange={e=>setWa({...wa,template_tagih:e.target.value})} className="w-full bg-[#0F1220] border border-[#2A2F4A] rounded-2xl p-3 text-[12px] mt-1 h-20" /></div>
           <div className="col-span-2"><label className="text-[10px] text-slate-500">Template Pengingat</label><textarea value={wa.template_ingat} onChange={e=>setWa({...wa,template_ingat:e.target.value})} className="w-full bg-[#0F1220] border border-[#2A2F4A] rounded-2xl p-3 text-[12px] mt-1 h-20" /></div>
         </div>
