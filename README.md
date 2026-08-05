@@ -1,39 +1,25 @@
-# RT 09/14 - NextJS + Supabase Live - SIAP DEPLOY HARI INI
+# RT 09 - Full Auth (Superadmin + Warga)
 
-## 1. Buat Supabase (2 menit)
-1. Buka supabase.com -> New Project
-2. Masuk SQL Editor -> Paste file `supabase/schema.sql` -> Run
-3. Settings -> API -> Copy URL dan anon key
+## Fitur Baru V7 Auth
+- Login page /login dengan NIK + Password
+- Role: superadmin vs warga
+- /admin = lihat semua kas + warga
+- /warga = lihat iuran milik sendiri saja
+- Supabase Auth + profiles table
 
-## 2. Push ke GitHub
-```bash
-git init
-git add .
-git commit -m "RT09 live supabase"
-git branch -M main
-git remote add origin https://github.com/USERNAME/rt09-dashboard.git
-git push -u origin main
+## Setup Auth (5 menit)
+1. Run schema_auth.sql di SQL Editor (setelah schema FIX)
+2. Supabase Dashboard -> Authentication -> Users -> Add User:
+   - Email: superadmin@rt09.local, Password: admin123, Auto Confirm: ON
+   - Email: warga1@rt09.local, Password: warga123, Auto Confirm: ON
+3. Copy UUID dari masing-masing user, lalu run:
+```sql
+insert into profiles (id, email, nik, role) values
+('UUID_SUPERADMIN','superadmin@rt09.local','3578030504830006','superadmin'),
+('UUID_WARGA','warga1@rt09.local','3578030504830001','warga');
 ```
+4. Deploy Vercel dengan ENV yang sama, buka /login
 
-## 3. Deploy Vercel (1 klik live)
-1. vercel.com -> New Project -> Import GitHub repo
-2. Add Environment Variables:
-   - NEXT_PUBLIC_SUPABASE_URL
-   - NEXT_PUBLIC_SUPABASE_ANON_KEY
-3. Deploy -> Live!
-
-## 4. Data Migration dari Google Sheets
-- Export Sheets Warga/Iuran ke CSV
-- Import di Supabase Table Editor -> Import CSV
-- Atau pakai script migrasi yang sudah ada di `supabase/migrate.js` (akan aku bikinkan kalau butuh)
-
-## Fitur Live
-- Kas realtime dari Supabase (bukan Sheets lagi)
-- Grafik otomatis update
-- Riwayat tagihan live
-- Pengumuman live
-- Inventaris pinjam (bisa update stok langsung)
-
-Sudah termasuk RLS public untuk MVP biar cepat live, nanti bisa diperketat auth.
-
-Butuh bantuan migrasi data Sheets -> Supabase? Bilang aja kak!
+Login:
+- Superadmin NIK 3578030504830006 pass admin123 -> redirect /admin
+- Warga NIK 3578030504830001 pass warga123 -> redirect /warga
